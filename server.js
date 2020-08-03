@@ -25,7 +25,7 @@ app.get('/api/v1/stories', (request, response) => {
 app.post('/api/v1/prompts', (request, response) => {
   const newPrompt = request.body;
 
-  for (let requiredParameter of ['id', 'characterAge', 'characterName', 'location', 'nationality', 'prompt']) {
+  for (let requiredParameter of ['id', 'prompt']) {
     if (!newPrompt[requiredParameter]) return response.status(422).json({message: `You are missing a required parameter of ${requiredParameter}`});
   }
 
@@ -37,7 +37,7 @@ app.post('/api/v1/prompts', (request, response) => {
 app.post('/api/v1/stories', (request, response) => {
   const newStory = request.body;
 
-  for (let requiredParameter of ['promptId', 'authorName', 'storyText', 'storyTitle']) {
+  for (let requiredParameter of ['promptId', 'storyId', 'authorName', 'storyText', 'storyTitle']) {
     if (!newStory[requiredParameter]) return response.status(422).json({message: `You are missing a required parameter of ${requiredParameter}`});
   }
 
