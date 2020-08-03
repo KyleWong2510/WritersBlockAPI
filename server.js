@@ -2,13 +2,15 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 
+const sampleData = require('./sampleData')
+
 app.use(express.json())
 app.use(cors())
 app.set('port', process.env.PORT || 3001)
 
 app.locals.title = 'Writer\'s Block API'
-app.locals.prompts = []
-app.locals.stories = []
+app.locals.prompts = sampleData.samplePrompts
+app.locals.stories = sampleData.sampleStories
 
 app.get('/', (request, response) => {
   response.status(200).json(app.locals.title)
